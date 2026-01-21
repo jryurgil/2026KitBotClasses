@@ -47,6 +47,18 @@ public final class Constants {
     public static final double SPIN_UP_SECONDS = 1;
   }
 
+  public static final class ProtoConstants{
+    // Constants value for prototype launcher motors
+    public static final int PROTO_FEEDER_MOTOR_ID = 7;
+    public static final int PROTO_LAUNCHER_MOTOR_ID = 8;
+    public static final int PROTO_INTAKE_MOTOR_ID = 9;
+
+    // We need power values for the 3 motors
+    public static final double PROTO_FEEDER_POWER = 0.5;
+    public static final double PROTO_INTAKE_POWER= 0.5;
+    public static final double PROTO_LAUNCHER_POWER = 0.5;
+  }
+
   public static final class OperatorConstants {
     // Port constants for driver and operator controllers. These should match the
     // values in the Joystick tab of the Driver Station software
