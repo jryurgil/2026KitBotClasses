@@ -53,6 +53,7 @@ public class RobotContainer {
     // add additional auto modes you can add additional lines here with
     // autoChooser.addOption
     autoChooser.setDefaultOption("Autonomous", new ExampleAuto(driveSubsystem, fuelSubsystem));
+    autoChooser.addOption("Center", new ExampleAuto(driveSubsystem, fuelSubsystem));
   }
 
   /**
