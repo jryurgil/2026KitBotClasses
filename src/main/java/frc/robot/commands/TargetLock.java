@@ -5,13 +5,14 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.LimelightHelpers;
 import frc.robot.subsystems.CANDriveSubsystem;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
 public class TargetLock extends Command {
   /** Creates a new Drive. */
   CANDriveSubsystem driveSubsystem;
-  double xSpeed, zRotation;
+  
 
   public TargetLock(CANDriveSubsystem driveSystem) {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -29,7 +30,22 @@ public class TargetLock extends Command {
   // arcade drive object
   @Override
   public void execute() {
-    driveSubsystem.driveArcade(xSpeed, zRotation);
+    // Basic targeting data
+double tx = LimelightHelpers.getTX("");  // Horizontal offset from crosshair to target in degrees
+double ty = LimelightHelpers.getTY("");  // Vertical offset from crosshair to target in degrees
+double ta = LimelightHelpers.getTA("");  // Target area (0% to 100% of image)
+boolean hasTarget = LimelightHelpers.getTV(""); // Do you have a valid target?
+
+double txnc = LimelightHelpers.getTXNC("");  // Horizontal offset from principal pixel/point to target in degrees
+double tync = LimelightHelpers.getTYNC("");  // Vertical offset from principal pixel/point to target in degrees
+    
+if (hasTarget)
+{
+  driveSubsystem.driveArcade(0,0);
+} else {
+  driveSubsystem.driveArcade(0,0.1); // Robot is rotating slowly if theres no target
+}
+
   }
 
   // Called once the command ends or is interrupted.
