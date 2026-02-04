@@ -41,7 +41,9 @@ double tync = LimelightHelpers.getTYNC("");  // Vertical offset from principal p
     
 if (hasTarget)
 {
-  driveSubsystem.driveArcade(0,0);
+
+  //positive is counter-clockwise, negative is clockwise
+  driveSubsystem.driveArcade(0-tx/20,(0-ty)/20);//Choose center coordinates
 } else {
   driveSubsystem.driveArcade(0,0.2); // Robot is rotating slowly if theres no target
 }
