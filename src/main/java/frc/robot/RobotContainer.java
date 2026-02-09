@@ -21,6 +21,7 @@ import frc.robot.commands.ProtoLaunchSequence;
 import frc.robot.commands.TargetLock;
 import frc.robot.subsystems.CANDriveSubsystem;
 import frc.robot.subsystems.CANFuelSubsystem;
+import frc.robot.subsystems.DemoPneumatics;
 import frc.robot.subsystems.ProtoLauncher;
 
 /**
@@ -35,6 +36,8 @@ public class RobotContainer {
   private final CANDriveSubsystem driveSubsystem = new CANDriveSubsystem();
   private final CANFuelSubsystem fuelSubsystem = new CANFuelSubsystem();
   private final ProtoLauncher protoLauncherSubsystem = new ProtoLauncher();
+  //test penumatics
+  private final DemoPneumatics demoPneumatics = new DemoPneumatics();
 
   // The driver's controller
   private final CommandXboxController driverController = new CommandXboxController(

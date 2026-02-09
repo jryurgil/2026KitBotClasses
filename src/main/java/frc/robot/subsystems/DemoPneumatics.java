@@ -26,7 +26,7 @@ public class DemoPneumatics extends SubsystemBase {
 //private final TalonSRX feederRoller; //Rollers on back of prototype launcher
 //private final TalonSRX intakeRoller; //Orange star at center of launcher
 private final DoubleSolenoid claw;
-
+private boolean elasticBoolean;
 
   /** Creates a new CANBallSubsystem. */
   public DemoPneumatics() {
@@ -38,15 +38,15 @@ private final DoubleSolenoid claw;
  // feederRoller = new TalonSRX(PROTO_FEEDER_MOTOR_ID);
   //launcherRoller = new SparkFlex(PROTO_LAUNCHER_MOTOR_ID, MotorType.kBrushless);
   claw = new DoubleSolenoid(PneumaticsModuleType.REVPH, 8, 9);
-
+elasticBoolean = false;
 
     
     // put default values for various fuel operations onto the dashboard
     // all commands using this subsystem pull values from the dashbaord to allow
     // you to tune the values easily, and then replace the values in Constants.java
     // with your new values. For more information, see the Software Guide.
-    SmartDashboard.getBoolean("extend", false);
-    
+
+    SmartDashboard.putBoolean("extend",elasticBoolean);
   }
 
 public void extend(boolean extendBool){
@@ -62,5 +62,7 @@ public void extend(boolean extendBool){
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.getBoolean("extend", elasticBoolean);
+    extend(elasticBoolean);
   }
 }
