@@ -63,6 +63,10 @@ public void extend(boolean extendBool){
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.getBoolean("extend", elasticBoolean);
-    extend(elasticBoolean);
+    if(elasticBoolean){
+    claw.set(Value.kForward);
+  }else{
+    claw.set(Value.kReverse);
+  }
   }
 }
